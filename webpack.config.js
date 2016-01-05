@@ -27,7 +27,15 @@ const common = {
         loaders: [ 'style', 'css' ],
         // Include accepts either a path or an array of paths
         include: PATHS.app
-      }
+      },
+      {
+        test: /\.(png|jpg|jpeg|gif|svg|woff|woff2)$/,
+        loader: 'url-loader?limit=10000',
+      }, 
+      {
+        test: /\.(eot|ttf|wav|mp3)$/,
+        loader: 'file-loader',
+      },
     ]
   },
   entry: PATHS.app,
@@ -44,7 +52,17 @@ const common = {
       title: 'Kanban app',
       appMountId: 'app'
     })
-  ]
+  ]//,
+//  postcss: function plugins(bundler) {
+//    return [
+//      require('postcss-import')({ addDependencyTo: bundler }),
+//      require('precss')(),
+//      require('postcss-url')({
+//        copy: 'rebase',
+//      }),
+//      require('autoprefixer')({ browsers: AUTOPREFIXER_BROWSERS }),
+//    ];
+//  }
 };
 
 // Default configuration

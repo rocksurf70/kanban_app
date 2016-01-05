@@ -1,7 +1,7 @@
 import uuid from 'node-uuid';
 import React from 'react';
 import Notes from './Notes.jsx';
-
+import { Button } from 'react-bootstrap';
 
 export default class App extends React.Component {
 
@@ -31,9 +31,11 @@ export default class App extends React.Component {
     const notes = this.state.notes;
 
     return (
-      <div>
-        <button className="add-note" onClick={this.addNote}>+</button>
-        <Notes notes={notes} />
+      <div className="container">
+        <div className="page-header">
+          <Button className="add-note" bsStyle="primary" bsSize="xsmall" onClick={this.addNote}>+</Button>
+          <Notes notes={notes} />
+        </div>
       </div>
       );  
   }
