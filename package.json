@@ -32,6 +32,7 @@
   },
   "dependencies": {
     "alt": "^0.18.1",
+    "alt-container": "^1.0.0",
     "alt-utils": "^1.0.0",
     "bootstrap": "^3.3.6",
     "file-loader": "^0.8.5",
