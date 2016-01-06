@@ -1,43 +1,33 @@
 import AltContainer from 'alt-container';
 import React from 'react';
-import Notes from './Notes.jsx';
 import { Button } from 'react-bootstrap';
 
-import NoteActions from '../actions/NoteActions';
-import NoteStore from '../stores/NoteStore';
+import Lanes from './Lanes.jsx';
+import LaneActions from '../actions/LaneActions';
+import LaneStore from '../stores/LaneStore';
 
 export default class App extends React.Component {
 
   render() {
 
-    const notes = this.state.notes;
-
     return (
       <div className="container">
         <div className="page-header">
-          <Button className="add-note" bsStyle="primary" bsSize="xsmall" onClick={this.addNote}>+</Button>
+          <Button className="add-lane" bsStyle="primary" bsSize="xsmall" onClick={this.addItem}>+</Button>
 					<AltContainer
-						stores={[NoteStore]}
+						stores={[LaneStore]}
 						inject={{
-							notes: () => NoteStore.getState().notes
+							lanes: () => LaneStore.getState().lanes || []
 						}}
 					>
-            <Notes notes={notes} onEdit={this.editNote} onDelete={this.deleteNote} />
+						<Lanes />
    				</AltContainer>
         </div>
       </div>
       );  
-  }
-
-  addNote() {
-		NoteActions.create({task: 'New task'});
-  }
-
-	editNote(id, task) {
-		NoteActions.update({id, task});
 	}
 
-	deleteNote(id) {
-		NoteActions.delete(id);
-	}
+	addItem() {
+		LaneActions.create({name: 'New Lane'});
+ 	}
 }
